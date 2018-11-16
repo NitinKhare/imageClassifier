@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!--<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+-->
+<link rel="stylesheet" href="/static/bootstrap.css">
+<script src="/static/jquery.js"></script>
+<script src="/static/bootstrap.js"></script>
+   
+</head>
+<style>
+    footer {
+        background-color: #262626;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 35px;
+        text-align: center;
+        color: #CCC;
+    }
+
+    footer p {
+        padding: 10.5px;
+        margin: 0px;
+        line-height: 100%;
+    }
+
+    .img-fluid{
+        width: 100%;
+    }
+    video {
+    width: 100%;
+    height: auto;
+}
+</style>
+
+<script>
+var vid = document.getElementById("Video");
+vid.playbackRate = 2;
+</script>
+
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/test">Image Classifier</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/test">Home</a></li>
+                <li><a href="/about">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+
+
+        <h1 class="my-4">Image Classifier
+            <small></small>
+        </h1>
+
+
+        <div class="row">
+
+            <div class="col-md-8">
+                <img class="img-fluid" src="/static/image.gif" alt="image">
+              
+
+            </div>
+
+            <div class="col-md-4">
+                <h3 class="my-3"><strong>About Project</strong></h3>
+                <p>Image classification refers to the task of extracting information classes from a multiband raster image. It is the ability bility for a computer to intelligently recognize an object. Such work is being done at the greatest technology companies, and it’s since spawned this unwarranted notion of exclusivity</p>
+                <h3 class="my-3">Tech Stack</h3>
+                <ul>
+                    <li>Tensorflow</li>
+                    <li>Flask</li>
+                    <li>Keras</li>
+                    <li>Python v 3.6.5</li>
+                    <li>Javascript</li>
+                </ul>
+            </div>
+     </div>
+     <br><br>
+     <div class="panel panel-primary">
+            <div class="panel-heading"><h4 class="text-center">Architecture / Principle of the project</h4></div>
+            <div class="panel-body"> Image classifiers use Convolutional Neural Networks  because of its high accuracy. The CNN follows a hierarchical model which works on building a network, like a funnel, and finally gives out a fully-connected layer where all the neurons are connected to each other and the output is processed</div>
+          </div>
+
+          <br><br>
+     <div class="container">
+            <div>
+                <h2 class="text-center">The Layers involved in Convolutional Neural Network</h3>
+                <ol class="list-group">
+                <li class="list-group-item">Convolution</li>
+                <li class="list-group-item">Pooling</li>
+                <li class="list-group-item">Flattening</li>
+                <li class="list-group-item">Full Connection</li>
+                </ol>
+    
+            </div>
+            
+         </div>
+         <br><br>
+     <div class="container">
+         <h2 class="text-center"><strong>Convolutional Neural Network in Action </strong></h2><br>
+         
+        <video id = "Video" controls autoplay muted loop>
+            <source src="/static/imageclassifier.webm" type="video/webm">
+            
+            Your browser does not support HTML5 video.
+          </video>
+        
+     </div>
+        
+
+        
+ </div>
+    <br><br>
+    <footer>
+        <p><a style="color:#0a93a6; text-decoration:none;" href="/about">Image Classifier</a>, Mini Project</p>
+    </footer>
+</body>
+
+</html>

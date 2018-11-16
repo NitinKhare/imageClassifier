@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!--<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+-->
+<link rel="stylesheet" href="/static/bootstrap.css">
+<script src="/static/jquery.js"></script>
+<script src="/static/bootstrap.js"></script>
+</head>
+<style>
+    .btn-file {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .btn-file input[type=file] {
+        position: absolute;
+        top: 0;
+        right: 0;
+        min-width: 100%;
+        min-height: 100%;
+        font-size: 100px;
+        text-align: right;
+        filter: alpha(opacity=0);
+        opacity: 0;
+        outline: none;
+        background: white;
+        cursor: inherit;
+        display: block;
+    }
+
+    footer{
+        background-color: #262626;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 35px;
+    text-align: center;
+    color: #CCC;
+}
+
+footer p {
+    padding: 10.5px;
+    margin: 0px;
+    line-height: 100%;
+}
+
+    #img-upload {
+        width: 50%;
+    }
+    #first:first-letter {
+    text-transform:capitalize;
+}
+</style>
+<script>
+    $(document).ready(function () {
+        $(document).on('change', '.btn-file :file', function () {
+            var input = $(this),
+                label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+            input.trigger('fileselect', [label]);
+        });
+
+        $('.btn-file :file').on('fileselect', function (event, label) {
+
+            var input = $(this).parents('.input-group').find(':text'),
+                log = label;
+
+            if (input.length) {
+                input.val(log);
+            } else {
+                if (log) alert(log);
+            }
+
+        });
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#img-upload').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#imgInp").change(function () {
+            readURL(this);
+        });
+    });
+
+
+</script>
+
+
+
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">Image Classifier</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/test">Home</a></li>
+                <li><a href="/about">About</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <h1 class="text-center"><strong>Results</strong></h1>
+        <br>
+        <div class="container-fluid">
+            <div id="results">
+            <!--<pre>{{data}}</pre>-->
+    </div>
+    </div>
+
+        <script>
+                var res = JSON.parse('{{ data | tojson | safe}}');
+                
+                for(var i=0;i<5;i++){
+                
+                //document.getElementById('results').innerHTML += res.predictions[i].imagenetID +"<br>"+ res.predictions[i].label+"<br>"+res.predictions[i].probability;
+                document.getElementById('results').innerHTML +="<ul class=\"list-group\">"
+                for(var key in res.predictions[i]){
+                    document.getElementById('results').innerHTML+="<li class=\"list-group-item  active\">"+"<span id=first>"+ key+"</span>"+"  :  "+res.predictions[i][key]+"</li>";
+                }
+                document.getElementById('results').innerHTML+= "</ul>"
+                }
+                
+            </script>
+
+    <footer>
+        <p><a style="color:#0a93a6; text-decoration:none;" href="/about">Image Classifier</a>, Mini Project</p>
+    </footer>
+</body>
+
+</html>
