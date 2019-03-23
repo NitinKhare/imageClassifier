@@ -14,7 +14,8 @@ A Mini project for college that uses RESNET50 model and uses flask to interact a
   <li>Flask</li>
 </ul>
 
-
+<!-- 
 Sources:
   https://blog.keras.io/building-a-simple-keras-deep-learning-rest-api.html
+-->
 
